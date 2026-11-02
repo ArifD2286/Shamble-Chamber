@@ -1,24 +1,49 @@
 [gd_scene format=3 uid="uid://b6xy8ubtvkrab"]
 
 [ext_resource type="Script" uid="uid://wo1viy2harpi" path="res://game.gd" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://ca1xw4yy6fxq7" path="res://head.gd" id="2_e2o6t"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_80nbo"]
-size = Vector2(20, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
+radius = 15.0
 
 [node name="Node2D" type="Node2D" unique_id=773225363]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1516551246]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=302081087]
 script = ExtResource("1_80nbo")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1318628564]
-texture_filter = 1
-position = Vector2(-2.3841858e-07, 4.172325e-07)
-texture = SubResource("PlaceholderTexture2D_80nbo")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1227400967]
-shape = SubResource("RectangleShape2D_e2o6t")
+shape = SubResource("CircleShape2D_e2o6t")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1360198840]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
+
+[node name="Arm" type="Line2D" parent="CharacterBody2D" unique_id=1161595177]
+texture_filter = 1
+points = PackedVector2Array(4, -10, 26, -4)
+width = 6.0
+default_color = Color(0.96862745, 0.8392157, 0.70980394, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Arm2" type="Line2D" parent="CharacterBody2D" unique_id=1472665299]
+texture_filter = 1
+points = PackedVector2Array(4, 10, 26, 4)
+width = 6.0
+default_color = Color(0.97, 0.83905005, 0.7081, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Head" type="Node2D" parent="CharacterBody2D" unique_id=848196784]
+script = ExtResource("2_e2o6t")
+
+[node name="Gun" type="Line2D" parent="CharacterBody2D" unique_id=1810243097]
+points = PackedVector2Array(20, 0, 42, 0)
+width = 6.0
+default_color = Color(0.45882353, 0.45882353, 0.45882353, 1)
+
+[node name="Muzzle" type="Marker2D" parent="CharacterBody2D" unique_id=1280840808]
+position = Vector2(44, 0)
