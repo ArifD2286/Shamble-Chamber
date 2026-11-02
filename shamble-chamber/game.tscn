@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b6xy8ubtvkrab"]
+
+[ext_resource type="Script" uid="uid://wo1viy2harpi" path="res://game.gd" id="1_80nbo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_80nbo"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
+
+[node name="Node2D" type="Node2D" unique_id=773225363]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=302081087]
+script = ExtResource("1_80nbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1318628564]
+texture_filter = 1
+position = Vector2(-2.3841858e-07, 4.172325e-07)
+texture = SubResource("PlaceholderTexture2D_80nbo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1227400967]
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1360198840]
+zoom = Vector2(2, 2)

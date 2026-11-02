@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GunData" format=3 uid="uid://cbjgf1v047a2c"]
+
+[ext_resource type="Script" uid="uid://dukio7lxeheam" path="res://gun_data.gd" id="1_4adss"]
+
+[resource]
+script = ExtResource("1_4adss")
+fire_rate = 0.9
+mag_size = 6
+pallets = 6
+spread_degrees = 20.0
+metadata/_custom_type_script = "uid://dukio7lxeheam"
