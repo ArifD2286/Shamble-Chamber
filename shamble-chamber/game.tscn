@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://ca1xw4yy6fxq7" path="res://head.gd" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://dqx03iq5wi5sc" path="res://bullet.tscn" id="2_fc0e3"]
 [ext_resource type="Resource" uid="uid://bc3nln1b0pa0v" path="res://pistol.tres" id="3_7jktm"]
+[ext_resource type="AudioStream" uid="uid://c41g0yhsb1pw8" path="res://assets/shoot_sfx.mp3" id="5_ryrav"]
+[ext_resource type="AudioStream" uid="uid://y44t6xi8t2qv" path="res://assets/reload_sfx.mp3" id="6_eow3j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
@@ -51,3 +53,10 @@ default_color = Color(0.45882353, 0.45882353, 0.45882353, 1)
 
 [node name="Muzzle" type="Marker2D" parent="CharacterBody2D" unique_id=1280840808]
 position = Vector2(44, 0)
+
+[node name="Shoot" type="AudioStreamPlayer" parent="." unique_id=93048737]
+stream = ExtResource("5_ryrav")
+volume_db = -5.0
+
+[node name="Reload" type="AudioStreamPlayer" parent="." unique_id=1604700675]
+stream = ExtResource("6_eow3j")
