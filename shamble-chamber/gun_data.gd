@@ -15,6 +15,6 @@ extends Resource
 @export var fire_rate: float = 0.3
 @export var mag_size: int = 12
 @export var reload_time: float = 1.2
-@export var bullet_speed: float = 600.0
+@export var bullet_speed: float = 1000.0
 @export var pallets: int = 1
 @export var spread_degrees: float = 0.0
