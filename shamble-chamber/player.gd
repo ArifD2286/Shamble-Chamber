@@ -9,12 +9,20 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene
 @export var gun: GunData
 @export var speed: float = 200.0
+@export var slot_guns: Array[GunData] = [null, null, null]
 var shoot_perm := true
 var ammo: int
 var is_reloading := false
+var slot_ammo: Array[int] = [0, 0, 0]
+var current_slot := 0
+var reload_id := 0
 
 func _ready() -> void:
-	ammo = gun.mag_size
+	for i in slot_guns.size():
+		if slot_guns[i] != null:
+			slot_ammo[i] = slot_guns[i].mag_size
+	equip(0)
+
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")
@@ -52,4 +60,18 @@ func reload() -> void:
 	await get_tree().create_timer(gun.reload_time).timeout
 	ammo = gun.mag_size
 	is_reloading = false
-	
+
+
+func equip(slot: int) -> void:
+	if slot_guns[slot] == null:
+		return
+	# before we swtich the gun, the live ammo from the gun is saved.
+	# the [ gun != null ] check is only there for the very first call during startup when there
+	# isn't any gun to start with
+	if gun != null:
+		slot_ammo[current_slot] = ammo
+	current_slot = slot
+	gun = slot_guns[slot]
+	ammo = slot_ammo[slot]
+	reload_id += 1
+	is_reloading = false

@@ -6,6 +6,7 @@
 script = ExtResource("1_4adss")
 fire_rate = 0.9
 mag_size = 6
+reload_time = 4.0
 pallets = 6
 spread_degrees = 20.0
 metadata/_custom_type_script = "uid://dukio7lxeheam"
