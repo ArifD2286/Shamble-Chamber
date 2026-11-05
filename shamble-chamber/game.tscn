@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dqx03iq5wi5sc" path="res://bullet.tscn" id="2_fc0e3"]
 [ext_resource type="Resource" uid="uid://bc3nln1b0pa0v" path="res://pistol.tres" id="3_7jktm"]
 [ext_resource type="AudioStream" uid="uid://b8g15x1jwpkjs" path="res://assets/gun_shot_sfx.mp3" id="5_7jktm"]
+[ext_resource type="FontFile" uid="uid://b5121ty6npeys" path="res://assets/Minecraft.ttf" id="5_ryrav"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
@@ -52,6 +53,18 @@ default_color = Color(0.45882353, 0.45882353, 0.45882353, 1)
 
 [node name="Muzzle" type="Marker2D" parent="CharacterBody2D" unique_id=1280840808]
 position = Vector2(44, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=188330152]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=789384513]
+texture_filter = 1
+offset_left = 996.0
+offset_top = 609.0
+offset_right = 1080.0
+offset_bottom = 632.0
+theme_override_fonts/font = ExtResource("5_ryrav")
+theme_override_font_sizes/font_size = 20
+text = "Ammo: 0"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="." unique_id=93048737]
 stream = ExtResource("5_7jktm")

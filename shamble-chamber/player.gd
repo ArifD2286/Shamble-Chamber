@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 @onready var shoot_sfx = $"../Shoot"
 @onready var reload_sfx = $"../Reload"
+@onready var live_ammo = $"../CanvasLayer/Label"
 @export var bullet_scene: PackedScene
 @export var gun: GunData
 @export var speed: float = 200.0
@@ -32,6 +33,18 @@ func _physics_process(delta: float) -> void:
 		shoot()
 	if Input.is_action_just_pressed("reload"):
 		reload()
+	if Input.is_action_just_pressed("slot_1"):
+		equip(0)
+	if Input.is_action_just_pressed("slot_2"):
+		equip(1)
+	if Input.is_action_just_pressed("slot_3"):
+		equip(2)
+	if is_reloading:
+		live_ammo.text = gun.gun_name + " Reloading"
+	else:
+	# [ %d ] is a placeholder for a whole number and [ %s ] is for text. They get filled in order from
+	# the list on the right
+		live_ammo.text = "%s %d / %d" % [gun.gun_name, ammo, gun.mag_size]
 	move_and_slide()
 
 
@@ -56,7 +69,7 @@ func reload() -> void:
 	if is_reloading or ammo == gun.mag_size:
 		return
 	is_reloading = true
-	reload_sfx.play()
+	var my_id := reload_id
 	await get_tree().create_timer(gun.reload_time).timeout
 	ammo = gun.mag_size
 	is_reloading = false
