@@ -1,12 +1,19 @@
 [gd_resource type="Resource" script_class="GunData" format=3 uid="uid://cbjgf1v047a2c"]
 
 [ext_resource type="Script" uid="uid://dukio7lxeheam" path="res://gun_data.gd" id="1_4adss"]
+[ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="1_laf2e"]
+[ext_resource type="AudioStream" uid="uid://cxu7r02rgkksy" path="res://assets/shotgun_reload_sfx.mp3" id="2_b2712"]
+[ext_resource type="AudioStream" uid="uid://d1piha381buu2" path="res://assets/shotgun_blast_sfx.mp3" id="4_3o8ei"]
 
 [resource]
 script = ExtResource("1_4adss")
+gun_name = "Shotgun"
 fire_rate = 0.9
 mag_size = 6
 reload_time = 4.0
 pallets = 6
 spread_degrees = 20.0
+shoot_sound = ExtResource("4_3o8ei")
+reload_sound = ExtResource("2_b2712")
+empty_shot_sound = ExtResource("1_laf2e")
 metadata/_custom_type_script = "uid://dukio7lxeheam"

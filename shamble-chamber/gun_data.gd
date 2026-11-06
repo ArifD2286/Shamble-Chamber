@@ -18,3 +18,6 @@ extends Resource
 @export var bullet_speed: float = 1000.0
 @export var pallets: int = 1
 @export var spread_degrees: float = 0.0
+@export var shoot_sound: AudioStream
+@export var reload_sound: AudioStream
+@export var empty_shot_sound: AudioStream

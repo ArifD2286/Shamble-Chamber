@@ -4,11 +4,11 @@ extends CharacterBody2D
 # A [ := ] assigns a value to a variable and locks the variable to the data type.
 # So instead of declatring the data type explicitly, the game guesses the data type
 
-@onready var shoot_sfx = $"../Shoot"
-@onready var reload_sfx = $"../Reload"
+@onready var gun_shoot_sfx: AudioStreamPlayer = $"../Shoot"
+@onready var gun_reload_sfx: AudioStreamPlayer = $"../Reload"
+@onready var empty_shot_sfx: AudioStreamPlayer = $"../EmptyShot"
 @onready var live_ammo = $"../CanvasLayer/Label"
 @export var bullet_scene: PackedScene
-@export var gun: GunData
 @export var speed: float = 200.0
 @export var slot_guns: Array[GunData] = [null, null, null]
 var shoot_perm := true
@@ -17,6 +17,7 @@ var is_reloading := false
 var slot_ammo: Array[int] = [0, 0, 0]
 var current_slot := 0
 var reload_id := 0
+var gun: GunData
 
 func _ready() -> void:
 	for i in slot_guns.size():
@@ -31,6 +32,8 @@ func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	if Input.is_action_pressed("shoot") and shoot_perm and not is_reloading and ammo > 0:
 		shoot()
+	if Input.is_action_pressed("shoot") and shoot_perm and not is_reloading and ammo == 0:
+		empty_shot_sfx.play()
 	if Input.is_action_just_pressed("reload"):
 		reload()
 	if Input.is_action_just_pressed("slot_1"):
@@ -51,7 +54,7 @@ func _physics_process(delta: float) -> void:
 func shoot() -> void:
 	shoot_perm = false
 	ammo -= 1
-	shoot_sfx.play()
+	gun_shoot_sfx.play()
 	for i in gun.pallets:
 		var bullet = bullet_scene.instantiate()
 		# [randf_range()] takes a random number 
@@ -65,12 +68,16 @@ func shoot() -> void:
 	shoot_perm = true
 
 
+
 func reload() -> void:
 	if is_reloading or ammo == gun.mag_size:
 		return
 	is_reloading = true
 	var my_id := reload_id
+	gun_reload_sfx.play()
 	await get_tree().create_timer(gun.reload_time).timeout
+	if my_id != reload_id:
+		return
 	ammo = gun.mag_size
 	is_reloading = false
 
@@ -85,6 +92,10 @@ func equip(slot: int) -> void:
 		slot_ammo[current_slot] = ammo
 	current_slot = slot
 	gun = slot_guns[slot]
+	gun_shoot_sfx.stream = gun.shoot_sound
+	gun_reload_sfx.stream = gun.reload_sound
+	empty_shot_sfx.stream = gun.empty_shot_sound
 	ammo = slot_ammo[slot]
 	reload_id += 1
+	gun_reload_sfx.stop()
 	is_reloading = false

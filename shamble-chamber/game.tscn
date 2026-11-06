@@ -4,8 +4,12 @@
 [ext_resource type="Script" uid="uid://ca1xw4yy6fxq7" path="res://head.gd" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://dqx03iq5wi5sc" path="res://bullet.tscn" id="2_fc0e3"]
 [ext_resource type="Resource" uid="uid://bc3nln1b0pa0v" path="res://pistol.tres" id="3_7jktm"]
+[ext_resource type="Script" uid="uid://dukio7lxeheam" path="res://gun_data.gd" id="4_hve3p"]
 [ext_resource type="AudioStream" uid="uid://b8g15x1jwpkjs" path="res://assets/gun_shot_sfx.mp3" id="5_7jktm"]
+[ext_resource type="Resource" uid="uid://cbjgf1v047a2c" path="res://shotgun.tres" id="5_mfdv2"]
 [ext_resource type="FontFile" uid="uid://b5121ty6npeys" path="res://assets/Minecraft.ttf" id="5_ryrav"]
+[ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="7_eow3j"]
+[ext_resource type="AudioStream" uid="uid://bfpjcdkxfb53j" path="res://assets/gun_reload_sfx.mp3" id="7_j5wjh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
@@ -19,7 +23,7 @@ offset_bottom = 40.0
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=302081087]
 script = ExtResource("1_80nbo")
 bullet_scene = ExtResource("2_fc0e3")
-gun = ExtResource("3_7jktm")
+slot_guns = Array[ExtResource("4_hve3p")]([ExtResource("3_7jktm"), ExtResource("5_mfdv2"), null])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1227400967]
 shape = SubResource("CircleShape2D_e2o6t")
@@ -58,10 +62,17 @@ position = Vector2(44, 0)
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=789384513]
 texture_filter = 1
-offset_left = 996.0
-offset_top = 609.0
-offset_right = 1080.0
-offset_bottom = 632.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -28.0
+offset_right = -10.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("5_ryrav")
 theme_override_font_sizes/font_size = 20
 text = "Ammo: 0"
@@ -71,3 +82,9 @@ stream = ExtResource("5_7jktm")
 volume_db = -5.0
 
 [node name="Reload" type="AudioStreamPlayer" parent="." unique_id=1604700675]
+stream = ExtResource("7_j5wjh")
+volume_db = -25.0
+
+[node name="EmptyShot" type="AudioStreamPlayer" parent="." unique_id=1617758433]
+stream = ExtResource("7_eow3j")
+volume_db = -15.0

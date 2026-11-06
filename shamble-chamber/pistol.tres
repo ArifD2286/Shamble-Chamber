@@ -1,8 +1,14 @@
 [gd_resource type="Resource" script_class="GunData" format=3 uid="uid://bc3nln1b0pa0v"]
 
 [ext_resource type="Script" uid="uid://dukio7lxeheam" path="res://gun_data.gd" id="1_6u0yd"]
+[ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="1_lpocc"]
+[ext_resource type="AudioStream" uid="uid://bfpjcdkxfb53j" path="res://assets/gun_reload_sfx.mp3" id="2_tpcoa"]
+[ext_resource type="AudioStream" uid="uid://b8g15x1jwpkjs" path="res://assets/gun_shot_sfx.mp3" id="4_sg5fs"]
 
 [resource]
 script = ExtResource("1_6u0yd")
 reload_time = 2.0
+shoot_sound = ExtResource("4_sg5fs")
+reload_sound = ExtResource("2_tpcoa")
+empty_shot_sound = ExtResource("1_lpocc")
 metadata/_custom_type_script = "uid://dukio7lxeheam"
