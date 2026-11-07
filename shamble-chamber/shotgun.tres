@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dukio7lxeheam" path="res://gun_data.gd" id="1_4adss"]
 [ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="1_laf2e"]
+[ext_resource type="Texture2D" uid="uid://24dho4qca1tk" path="res://assets/shotgun_texture.png" id="2_3o8ei"]
 [ext_resource type="AudioStream" uid="uid://cxu7r02rgkksy" path="res://assets/shotgun_reload_sfx.mp3" id="2_b2712"]
 [ext_resource type="AudioStream" uid="uid://d1piha381buu2" path="res://assets/shotgun_blast_sfx.mp3" id="4_3o8ei"]
 
@@ -16,4 +17,5 @@ spread_degrees = 20.0
 shoot_sound = ExtResource("4_3o8ei")
 reload_sound = ExtResource("2_b2712")
 empty_shot_sound = ExtResource("1_laf2e")
+gun_texture = ExtResource("2_3o8ei")
 metadata/_custom_type_script = "uid://dukio7lxeheam"

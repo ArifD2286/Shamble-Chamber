@@ -21,3 +21,7 @@ extends Resource
 @export var shoot_sound: AudioStream
 @export var reload_sound: AudioStream
 @export var empty_shot_sound: AudioStream
+@export var gun_texture: Texture2D
+@export var muzzle_offset: Vector2 = Vector2(44,0)
+@export var gun_offset: Vector2 = Vector2.ZERO
+@export var gun_scale: Vector2 = Vector2.ONE

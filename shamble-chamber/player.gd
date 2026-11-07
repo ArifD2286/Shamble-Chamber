@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var gun_reload_sfx: AudioStreamPlayer = $"../Reload"
 @onready var empty_shot_sfx: AudioStreamPlayer = $"../EmptyShot"
 @onready var live_ammo = $"../CanvasLayer/Label"
+@onready var gun_sprite: Sprite2D = $GunSprite
 @export var bullet_scene: PackedScene
 @export var speed: float = 200.0
 @export var slot_guns: Array[GunData] = [null, null, null]
@@ -68,7 +69,6 @@ func shoot() -> void:
 	shoot_perm = true
 
 
-
 func reload() -> void:
 	if is_reloading or ammo == gun.mag_size:
 		return
@@ -95,6 +95,10 @@ func equip(slot: int) -> void:
 	gun_shoot_sfx.stream = gun.shoot_sound
 	gun_reload_sfx.stream = gun.reload_sound
 	empty_shot_sfx.stream = gun.empty_shot_sound
+	gun_sprite.texture = gun.gun_texture
+	gun_sprite.offset = gun.gun_offset
+	gun_sprite.scale = gun.gun_scale
+	$Muzzle.position = gun.muzzle_offset
 	ammo = slot_ammo[slot]
 	reload_id += 1
 	gun_reload_sfx.stop()
