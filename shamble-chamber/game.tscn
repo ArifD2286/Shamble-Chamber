@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://b8g15x1jwpkjs" path="res://assets/gun_shot_sfx.mp3" id="5_7jktm"]
 [ext_resource type="Resource" uid="uid://cbjgf1v047a2c" path="res://shotgun.tres" id="5_mfdv2"]
 [ext_resource type="FontFile" uid="uid://b5121ty6npeys" path="res://assets/Minecraft.ttf" id="5_ryrav"]
+[ext_resource type="Texture2D" uid="uid://dv25chih8nwn6" path="res://assets/pistol_texture.png" id="6_mfdv2"]
 [ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="7_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bfpjcdkxfb53j" path="res://assets/gun_reload_sfx.mp3" id="7_j5wjh"]
 
@@ -56,6 +57,7 @@ default_color = Color(0.45882353, 0.45882353, 0.45882353, 1)
 texture_filter = 1
 position = Vector2(22, 0)
 rotation = 1.5707964
+texture = ExtResource("6_mfdv2")
 
 [node name="Head" type="Node2D" parent="CharacterBody2D" unique_id=848196784]
 script = ExtResource("2_e2o6t")
