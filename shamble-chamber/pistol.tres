@@ -13,5 +13,6 @@ shoot_sound = ExtResource("4_sg5fs")
 reload_sound = ExtResource("2_tpcoa")
 empty_shot_sound = ExtResource("1_lpocc")
 gun_texture = ExtResource("2_sg5fs")
-gun_scale = Vector2(14, 24)
+gun_offset = Vector2(0, -21)
+gun_scale = Vector2(1.5, 1.5)
 metadata/_custom_type_script = "uid://dukio7lxeheam"
