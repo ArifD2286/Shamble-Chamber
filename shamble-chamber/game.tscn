@@ -15,11 +15,30 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
 
+[sub_resource type="Gradient" id="Gradient_mfdv2"]
+colors = PackedColorArray(0.8745098, 0.85490197, 0.45882353, 1, 0.16470589, 0.16470589, 0.14509805, 0.019607844)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s33ni"]
+gradient = SubResource("Gradient_mfdv2")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s33ni"]
+size = Vector2(28, 28)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s33ni"]
+polygon = PackedVector2Array(-14, 14, -14, -14, 14, -14, 14, 14)
+
 [node name="Node2D" type="Node2D" unique_id=773225363]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1516551246]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -853.0
+offset_top = -793.0
+offset_right = 853.0
+offset_bottom = 793.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=302081087]
 script = ExtResource("1_80nbo")
@@ -61,6 +80,11 @@ script = ExtResource("2_e2o6t")
 [node name="Muzzle" type="Marker2D" parent="CharacterBody2D" unique_id=1280840808]
 position = Vector2(50, 0)
 
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=1230433106]
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_s33ni")
+texture_scale = 1.5
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=188330152]
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=789384513]
@@ -82,7 +106,7 @@ text = "Ammo: 0"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="." unique_id=93048737]
 stream = ExtResource("5_7jktm")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="Reload" type="AudioStreamPlayer" parent="." unique_id=1604700675]
 stream = ExtResource("7_j5wjh")
@@ -91,3 +115,20 @@ volume_db = -25.0
 [node name="EmptyShot" type="AudioStreamPlayer" parent="." unique_id=1617758433]
 stream = ExtResource("7_eow3j")
 volume_db = -15.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=804181961]
+color = Color(0.16470589, 0.16470589, 0.14509805, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=578250881]
+position = Vector2(0, -40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=718425900]
+shape = SubResource("RectangleShape2D_s33ni")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=1145364801]
+color = Color(0.8784314, 0.8784314, 0.8784314, 1)
+polygon = PackedVector2Array(-14, 14, -14, -14, 14, -14, 14, 14)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D" unique_id=288574646]
+texture_filter = 1
+occluder = SubResource("OccluderPolygon2D_s33ni")
