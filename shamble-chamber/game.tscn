@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6xy8ubtvkrab"]
 
 [ext_resource type="Script" uid="uid://wo1viy2harpi" path="res://player.gd" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://molxo8qeqp4j" path="res://assets/Shelf.png" id="1_iotsf"]
 [ext_resource type="Script" uid="uid://ca1xw4yy6fxq7" path="res://head.gd" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://dqx03iq5wi5sc" path="res://bullet.tscn" id="2_fc0e3"]
 [ext_resource type="Resource" uid="uid://bc3nln1b0pa0v" path="res://pistol.tres" id="3_7jktm"]
@@ -11,6 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://dv25chih8nwn6" path="res://assets/pistol_texture.png" id="6_mfdv2"]
 [ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="7_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bfpjcdkxfb53j" path="res://assets/gun_reload_sfx.mp3" id="7_j5wjh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lc2xo"]
+texture = ExtResource("1_iotsf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_n3vx6"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_lc2xo")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
@@ -26,12 +37,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s33ni"]
-size = Vector2(242, 27)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_s33ni"]
-polygon = PackedVector2Array(-121, 14, -121, -14, 121, -14, 121, 14)
-
 [node name="Node2D" type="Node2D" unique_id=773225363]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1516551246]
@@ -39,6 +44,11 @@ offset_left = -853.0
 offset_top = -793.0
 offset_right = 853.0
 offset_bottom = 793.0
+color = Color(0.627451, 0.627451, 0.627451, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=989831220]
+texture_filter = 1
+tile_set = SubResource("TileSet_n3vx6")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=302081087]
 script = ExtResource("1_80nbo")
@@ -81,6 +91,7 @@ script = ExtResource("2_e2o6t")
 position = Vector2(50, 0)
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D" unique_id=1230433106]
+visible = false
 color = Color(0.99215686, 0.87058824, 0.3882353, 1)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_s33ni")
@@ -118,19 +129,5 @@ stream = ExtResource("7_eow3j")
 volume_db = -15.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=804181961]
+visible = false
 color = Color(0.16470589, 0.16470589, 0.14509805, 1)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=578250881]
-position = Vector2(0, -40)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=718425900]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_s33ni")
-
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=1145364801]
-color = Color(0.8784314, 0.8784314, 0.8784314, 1)
-polygon = PackedVector2Array(-121, 14, -121, -14, 121, -14, 121, 14)
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="StaticBody2D" unique_id=288574646]
-texture_filter = 1
-occluder = SubResource("OccluderPolygon2D_s33ni")
