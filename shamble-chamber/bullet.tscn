@@ -36,3 +36,5 @@ scale = Vector2(2.1875002, 0.93749994)
 energy = 2.5
 texture = SubResource("GradientTexture2D_s33ni")
 texture_scale = 0.1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

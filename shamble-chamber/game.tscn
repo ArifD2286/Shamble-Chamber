@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wo1viy2harpi" path="res://player.gd" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://molxo8qeqp4j" path="res://assets/Shelf.png" id="1_iotsf"]
+[ext_resource type="Script" uid="uid://dslg16gxahxx8" path="res://game.gd" id="1_lc2xo"]
 [ext_resource type="Script" uid="uid://ca1xw4yy6fxq7" path="res://player_head.gd" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://dqx03iq5wi5sc" path="res://bullet.tscn" id="2_fc0e3"]
 [ext_resource type="Resource" uid="uid://bc3nln1b0pa0v" path="res://pistol.tres" id="3_7jktm"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dv25chih8nwn6" path="res://assets/pistol_texture.png" id="6_mfdv2"]
 [ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="7_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bfpjcdkxfb53j" path="res://assets/gun_reload_sfx.mp3" id="7_j5wjh"]
+[ext_resource type="PackedScene" uid="uid://cgovvkfjkhlmw" path="res://zombie.tscn" id="13_lc2xo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
@@ -28,6 +30,9 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_s33ni"]
+vertices = PackedVector2Array(837, 777, -837, 777, -304, 80, -272, 80, 837, -777, -48, 80, -48, -144, -837, -777, -144, -144, -400, 80, -400, -144, -144, 80, -176, 80, -176, -144, -272, -144, -304, -144)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 5, 6), PackedInt32Array(7, 4, 6, 8), PackedInt32Array(9, 2, 1), PackedInt32Array(9, 1, 7, 10), PackedInt32Array(8, 11, 12, 13), PackedInt32Array(7, 8, 13), PackedInt32Array(7, 13, 14), PackedInt32Array(15, 10, 7), PackedInt32Array(15, 7, 14), PackedInt32Array(15, 14, 3, 2), PackedInt32Array(0, 3, 12), PackedInt32Array(0, 12, 11), PackedInt32Array(0, 11, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(853, -793, 853, 793, -853, 793, -853, -793)])
 parsed_geometry_type = 1
 agent_radius = 16.0
 
@@ -43,6 +48,8 @@ physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_iotsf")
 
 [node name="Node2D" type="Node2D" unique_id=773225363]
+script = ExtResource("1_lc2xo")
+zombie_scene = ExtResource("13_lc2xo")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1516551246]
 offset_left = -853.0
@@ -138,5 +145,25 @@ navigation_polygon = SubResource("NavigationPolygon_s33ni")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=989831220]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD9//3/AwAAAAAAAAD9//7/AwAAAAAAAAD9////AwAAAAAAAAD8//3/AwAAAAAAADD8//7/AwAAAAAAADD8////AwAAAAAAADD8/wAAAwAAAAAAADD9/wAAAwAAAAAAAAD8/wEAAwAAAAAAAFD9/wEAAwAAAAAAAFD8//z/AwAAAAAAAGD9//z/AwAAAAAAAGA=")
+tile_map_data = PackedByteArray("AAD9//3/AwAAAAAAAAD9//7/AwAAAAAAAAD9////AwAAAAAAAAD8//3/AwAAAAAAADD8//7/AwAAAAAAADD8////AwAAAAAAADD8/wAAAwAAAAAAADD9/wAAAwAAAAAAAAD8/wEAAwAAAAAAAFD9/wEAAwAAAAAAAFD8//z/AwAAAAAAAGD9//z/AwAAAAAAAGD5/wAAAwAAAAAAAAD5////AwAAAAAAAAD5//7/AwAAAAAAAAD5//3/AwAAAAAAAAD4//3/AwAAAAAAADD4//7/AwAAAAAAADD4////AwAAAAAAADD4/wAAAwAAAAAAADD4/wEAAwAAAAAAAFD5/wEAAwAAAAAAAFD4//z/AwAAAAAAAGD5//z/AwAAAAAAAGD1//3/AwAAAAAAAAD1//7/AwAAAAAAAAD1////AwAAAAAAAAD1/wAAAwAAAAAAAAD0/wAAAwAAAAAAADD0////AwAAAAAAADD0//7/AwAAAAAAADD0//3/AwAAAAAAADD0//z/AwAAAAAAAGD1//z/AwAAAAAAAGD0/wEAAwAAAAAAAFD1/wEAAwAAAAAAAFA=")
 tile_set = SubResource("TileSet_n3vx6")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1220944736]
+
+[node name="SpawnP1" type="Marker2D" parent="SpawnPoints" unique_id=672258143]
+position = Vector2(-773, -713)
+
+[node name="SpawnP2" type="Marker2D" parent="SpawnPoints" unique_id=694635283]
+position = Vector2(773, 713)
+
+[node name="SpawnP3" type="Marker2D" parent="SpawnPoints" unique_id=1893535757]
+position = Vector2(-733, 673)
+
+[node name="SpawnP4" type="Marker2D" parent="SpawnPoints" unique_id=651619107]
+position = Vector2(320, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=245813835]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
