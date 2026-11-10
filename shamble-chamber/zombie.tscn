@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cgovvkfjkhlmw"]
+
+[ext_resource type="Script" uid="uid://ctay15khmsy1m" path="res://zombie.gd" id="1_roy8y"]
+[ext_resource type="Script" uid="uid://d3hnpeil3v03p" path="res://zombie_head.gd" id="1_uiaus"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s33ni"]
+radius = 15.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=790460202]
+script = ExtResource("1_roy8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2071181686]
+shape = SubResource("CircleShape2D_s33ni")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=52830870]
+points = PackedVector2Array(4, -10, 26, -8)
+width = 6.0
+default_color = Color(0.3647059, 0.44313726, 0.32156864, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=394423243]
+points = PackedVector2Array(4, 10, 26, 8)
+width = 6.0
+default_color = Color(0.3647059, 0.44313726, 0.32156864, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1791826609]
+script = ExtResource("1_uiaus")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=947152540]

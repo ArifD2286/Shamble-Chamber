@@ -16,3 +16,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
+
+
+func _on_body_entered(body: Node2D) -> void:
+	# The line below makes an exception for the player's Col.shape2d so that the bullet never despawns incase
+	# it touches the player's Col.shape2d (prob impossible but hey be prepared lol)
+	if body.is_in_group("player"):
+		return
+	queue_free()

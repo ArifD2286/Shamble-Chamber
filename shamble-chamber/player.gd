@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var live_ammo = $"../CanvasLayer/Label"
 @onready var gun_sprite: Sprite2D = $GunSprite
 @export var bullet_scene: PackedScene
-@export var speed: float = 200.0
+@export var speed: float = 275.0
 @export var slot_guns: Array[GunData] = [null, null, null]
 var shoot_perm := true
 var ammo: int
@@ -24,6 +24,7 @@ func _ready() -> void:
 	for i in slot_guns.size():
 		if slot_guns[i] != null:
 			slot_ammo[i] = slot_guns[i].mag_size
+	add_to_group("player")
 	equip(0)
 
 

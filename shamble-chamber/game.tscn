@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wo1viy2harpi" path="res://player.gd" id="1_80nbo"]
 [ext_resource type="Texture2D" uid="uid://molxo8qeqp4j" path="res://assets/Shelf.png" id="1_iotsf"]
-[ext_resource type="Script" uid="uid://ca1xw4yy6fxq7" path="res://head.gd" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://ca1xw4yy6fxq7" path="res://player_head.gd" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://dqx03iq5wi5sc" path="res://bullet.tscn" id="2_fc0e3"]
 [ext_resource type="Resource" uid="uid://bc3nln1b0pa0v" path="res://pistol.tres" id="3_7jktm"]
 [ext_resource type="Script" uid="uid://dukio7lxeheam" path="res://gun_data.gd" id="4_hve3p"]
@@ -12,17 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dv25chih8nwn6" path="res://assets/pistol_texture.png" id="6_mfdv2"]
 [ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="7_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bfpjcdkxfb53j" path="res://assets/gun_reload_sfx.mp3" id="7_j5wjh"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iotsf"]
-texture = ExtResource("1_iotsf")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-
-[sub_resource type="TileSet" id="TileSet_n3vx6"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-sources/3 = SubResource("TileSetAtlasSource_iotsf")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
@@ -38,20 +27,29 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_s33ni"]
+parsed_geometry_type = 1
+agent_radius = 16.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iotsf"]
+texture = ExtResource("1_iotsf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_n3vx6"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/3 = SubResource("TileSetAtlasSource_iotsf")
+
 [node name="Node2D" type="Node2D" unique_id=773225363]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1516551246]
-visible = false
 offset_left = -853.0
 offset_top = -793.0
 offset_right = 853.0
 offset_bottom = 793.0
 color = Color(0.627451, 0.627451, 0.627451, 1)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=989831220]
-texture_filter = 1
-tile_map_data = PackedByteArray("AAD9//3/AwAAAAAAAAD9//7/AwAAAAAAAAD9////AwAAAAAAAAD8//3/AwAAAAAAADD8//7/AwAAAAAAADD8////AwAAAAAAADD8/wAAAwAAAAAAADD9/wAAAwAAAAAAAAD8/wEAAwAAAAAAAFD9/wEAAwAAAAAAAFD8//z/AwAAAAAAAGD9//z/AwAAAAAAAGA=")
-tile_set = SubResource("TileSet_n3vx6")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=302081087]
 script = ExtResource("1_80nbo")
@@ -134,3 +132,11 @@ volume_db = -15.0
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=804181961]
 visible = false
 color = Color(0.16470589, 0.16470589, 0.14509805, 1)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=730798653]
+navigation_polygon = SubResource("NavigationPolygon_s33ni")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=989831220]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9//3/AwAAAAAAAAD9//7/AwAAAAAAAAD9////AwAAAAAAAAD8//3/AwAAAAAAADD8//7/AwAAAAAAADD8////AwAAAAAAADD8/wAAAwAAAAAAADD9/wAAAwAAAAAAAAD8/wEAAwAAAAAAAFD9/wEAAwAAAAAAAFD8//z/AwAAAAAAAGD9//z/AwAAAAAAAGA=")
+tile_set = SubResource("TileSet_n3vx6")
