@@ -3,13 +3,19 @@ extends CharacterBody2D
 # Notes/revision:
 
 
-@export var speed: float = 100.0
+@export var data: ZombieData
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 var player: Node2D
+var health: int
+var speed: float
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
-
+	add_to_group("zombie")
+	speed = data.speed
+	health = data.health
+	modulate = data.tint
+	scale = Vector2.ONE
 
 func _physics_process(delta: float) -> void:
 	nav.target_position = player.global_position

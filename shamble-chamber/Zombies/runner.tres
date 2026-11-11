@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ZombieData" format=3 uid="uid://b5tiug8mg4gij"]
+
+[ext_resource type="Script" uid="uid://di0y0h0q6ppsa" path="res://zombie_data.gd" id="1_s0pip"]
+
+[resource]
+script = ExtResource("1_s0pip")
+zombie_name = "Runner"
+health = 20
+speed = 150.0
+tint = Color(0.7176471, 0.654902, 0.48235294, 1)
