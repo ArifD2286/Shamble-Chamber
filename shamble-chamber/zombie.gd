@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
 # Notes/revision:
-
+# If we have a function with something in the brackets, ex: [ func _physics_process(delta: float) ]
+# the [ delta ] is the name whilst [ : class_name ] is the type it is. It is known as 
+# the parameter list and they are the values a function needs when something calls it.
+# [ -> void ] after the brackets is the return type, void literally means nothing so if ex we have
+# [ -> int ] we would get return (integer data type)
 
 @export var data: ZombieData
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
@@ -15,7 +19,8 @@ func _ready() -> void:
 	speed = data.speed
 	health = data.health
 	modulate = data.tint
-	scale = Vector2.ONE
+	scale = Vector2.ONE * data.size
+
 
 func _physics_process(delta: float) -> void:
 	nav.target_position = player.global_position
@@ -26,3 +31,9 @@ func _physics_process(delta: float) -> void:
 	velocity = global_position.direction_to(next_point) * speed
 	look_at(next_point)
 	move_and_slide()
+
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		queue_free()

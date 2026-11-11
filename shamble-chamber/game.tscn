@@ -6,10 +6,14 @@
 [ext_resource type="Script" uid="uid://ca1xw4yy6fxq7" path="res://player_head.gd" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://dqx03iq5wi5sc" path="res://bullet.tscn" id="2_fc0e3"]
 [ext_resource type="Resource" uid="uid://bc3nln1b0pa0v" path="res://Guns/pistol.tres" id="3_7jktm"]
+[ext_resource type="Script" uid="uid://di0y0h0q6ppsa" path="res://zombie_data.gd" id="3_rvswv"]
+[ext_resource type="Resource" uid="uid://bmlusi4x2p1rg" path="res://Zombies/tank.tres" id="4_boyg6"]
 [ext_resource type="Script" uid="uid://dukio7lxeheam" path="res://gun_data.gd" id="4_hve3p"]
 [ext_resource type="AudioStream" uid="uid://b8g15x1jwpkjs" path="res://assets/gun_shot_sfx.mp3" id="5_7jktm"]
+[ext_resource type="Resource" uid="uid://b5tiug8mg4gij" path="res://Zombies/runner.tres" id="5_e36ub"]
 [ext_resource type="Resource" uid="uid://cbjgf1v047a2c" path="res://Guns/shotgun.tres" id="5_mfdv2"]
 [ext_resource type="FontFile" uid="uid://b5121ty6npeys" path="res://assets/Minecraft.ttf" id="5_ryrav"]
+[ext_resource type="Resource" uid="uid://dpfx6e25ljbuk" path="res://Zombies/walker.tres" id="6_hb5m1"]
 [ext_resource type="Texture2D" uid="uid://dv25chih8nwn6" path="res://assets/pistol_texture.png" id="6_mfdv2"]
 [ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="7_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bfpjcdkxfb53j" path="res://assets/gun_reload_sfx.mp3" id="7_j5wjh"]
@@ -50,6 +54,7 @@ sources/3 = SubResource("TileSetAtlasSource_iotsf")
 [node name="Node2D" type="Node2D" unique_id=773225363]
 script = ExtResource("1_lc2xo")
 zombie_scene = ExtResource("13_lc2xo")
+zombie_types = Array[ExtResource("3_rvswv")]([ExtResource("4_boyg6"), ExtResource("5_e36ub"), ExtResource("6_hb5m1")])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1516551246]
 offset_left = -853.0

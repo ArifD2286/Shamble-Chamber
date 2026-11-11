@@ -7,4 +7,5 @@ script = ExtResource("1_tmcoh")
 zombie_name = "Tank"
 health = 60
 speed = 75.0
-tint = Color(0.5921569, 0.41568628, 0.3647059, 1)
+tint = Color(0.6570267, 0.17074153, 4.813075e-07, 1)
+size = 1.2

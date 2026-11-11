@@ -23,4 +23,6 @@ func _on_body_entered(body: Node2D) -> void:
 	# it touches the player's Col.shape2d (prob impossible but hey be prepared lol)
 	if body.is_in_group("player"):
 		return
+	if body.is_in_group("zombie"):
+		body.take_damage(damage)
 	queue_free()

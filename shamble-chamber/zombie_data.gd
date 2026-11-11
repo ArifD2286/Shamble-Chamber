@@ -8,3 +8,4 @@ extends Resource
 @export var health: int = 30
 @export var speed: float = 100.0
 @export var tint: Color = Color.WHITE
+@export var size: float = 1.0
