@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://bfpjcdkxfb53j" path="res://assets/gun_reload_sfx.mp3" id="7_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cgovvkfjkhlmw" path="res://zombie.tscn" id="13_lc2xo"]
 [ext_resource type="Texture2D" uid="uid://24dho4qca1tk" path="res://assets/shotgun_texture.png" id="15_boyg6"]
+[ext_resource type="Script" uid="uid://bcm13g6ejrfbu" path="res://hotbar.gd" id="15_e36ub"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
@@ -141,21 +142,21 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 8
 alignment = 1
+script = ExtResource("15_e36ub")
 
-[node name="Slot1" type="Panel" parent="CanvasLayer/HBoxContainer" unique_id=916182490]
-custom_minimum_size = Vector2(32, 32)
+[node name="Panel" type="Panel" parent="CanvasLayer/HBoxContainer" unique_id=1009693357]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="CanvasLayer/HBoxContainer/Slot1" unique_id=1684198200]
+[node name="ItemIcon" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel" unique_id=240986928]
 texture_filter = 1
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 48.0
+offset_bottom = 48.0
 texture = ExtResource("6_mfdv2")
-expand_mode = 1
-stretch_mode = 5
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Slot1" unique_id=447313593]
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Panel" unique_id=1671354253]
 texture_filter = 1
 layout_mode = 0
 offset_top = -16.0
@@ -163,41 +164,42 @@ offset_right = 32.0
 theme_override_fonts/font = ExtResource("5_ryrav")
 text = "1"
 
-[node name="Slot2" type="Panel" parent="CanvasLayer/HBoxContainer" unique_id=79570337]
+[node name="Panel2" type="Panel" parent="CanvasLayer/HBoxContainer" unique_id=1474453610]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Slot2" unique_id=1621875327]
+[node name="ItemIcon" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel2" unique_id=1268373236]
 texture_filter = 1
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 48.0
+offset_bottom = 48.0
 texture = ExtResource("15_boyg6")
-expand_mode = 1
-stretch_mode = 5
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Slot2" unique_id=986893367]
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Panel2" unique_id=186633537]
 texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = -16.0
+offset_right = 32.0
 theme_override_fonts/font = ExtResource("5_ryrav")
 text = "2"
 
-[node name="Slot3" type="Panel" parent="CanvasLayer/HBoxContainer" unique_id=2013921138]
+[node name="Panel3" type="Panel" parent="CanvasLayer/HBoxContainer" unique_id=784189576]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Slot3" unique_id=265497190]
+[node name="ItemIcon" type="TextureRect" parent="CanvasLayer/HBoxContainer/Panel3" unique_id=433916614]
 texture_filter = 1
 layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-expand_mode = 1
-stretch_mode = 5
+offset_right = 48.0
+offset_bottom = 48.0
 
-[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Slot3" unique_id=1931120049]
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Panel3" unique_id=1307716591]
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = -16.0
+offset_right = 32.0
 theme_override_fonts/font = ExtResource("5_ryrav")
 text = "3"
 

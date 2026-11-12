@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var empty_shot_sfx: AudioStreamPlayer = $"../EmptyShot"
 @onready var live_ammo = $"../CanvasLayer/Label"
 @onready var gun_sprite: Sprite2D = $GunSprite
+@onready var hotbar = $"../CanvasLayer/HBoxContainer"
 @export var bullet_scene: PackedScene
 @export var speed: float = 275.0
 @export var slot_guns: Array[GunData] = [null, null, null]
@@ -104,3 +105,4 @@ func equip(slot: int) -> void:
 	reload_id += 1
 	gun_reload_sfx.stop()
 	is_reloading = false
+	hotbar.refresh(slot_guns, current_slot)
