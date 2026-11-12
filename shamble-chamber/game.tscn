@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="7_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bfpjcdkxfb53j" path="res://assets/gun_reload_sfx.mp3" id="7_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cgovvkfjkhlmw" path="res://zombie.tscn" id="13_lc2xo"]
+[ext_resource type="Texture2D" uid="uid://24dho4qca1tk" path="res://assets/shotgun_texture.png" id="15_boyg6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
@@ -128,6 +129,77 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("5_ryrav")
 theme_override_font_sizes/font_size = 20
 text = "Ammo: 0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=545130248]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Slot1" type="Panel" parent="CanvasLayer/HBoxContainer" unique_id=916182490]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/HBoxContainer/Slot1" unique_id=1684198200]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("6_mfdv2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Slot1" unique_id=447313593]
+texture_filter = 1
+layout_mode = 0
+offset_top = -16.0
+offset_right = 32.0
+theme_override_fonts/font = ExtResource("5_ryrav")
+text = "1"
+
+[node name="Slot2" type="Panel" parent="CanvasLayer/HBoxContainer" unique_id=79570337]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Slot2" unique_id=1621875327]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("15_boyg6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Slot2" unique_id=986893367]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_ryrav")
+text = "2"
+
+[node name="Slot3" type="Panel" parent="CanvasLayer/HBoxContainer" unique_id=2013921138]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HBoxContainer/Slot3" unique_id=265497190]
+texture_filter = 1
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/Slot3" unique_id=1931120049]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_ryrav")
+text = "3"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="." unique_id=93048737]
 stream = ExtResource("5_7jktm")
