@@ -239,7 +239,7 @@ position = Vector2(773, 713)
 position = Vector2(-733, 673)
 
 [node name="SpawnP4" type="Marker2D" parent="SpawnPoints" unique_id=651619107]
-position = Vector2(320, 0)
+position = Vector2(803, -743)
 
 [node name="Timer" type="Timer" parent="." unique_id=245813835]
 wait_time = 4.0

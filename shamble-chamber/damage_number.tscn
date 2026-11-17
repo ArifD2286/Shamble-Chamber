@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://si5gjoa0hofv"]
+
+[ext_resource type="FontFile" uid="uid://b5121ty6npeys" path="res://assets/Minecraft.ttf" id="1_6f2ja"]
+[ext_resource type="Script" uid="uid://22umvqet7vth" path="res://damage_number.gd" id="1_jany0"]
+
+[node name="Label" type="Label" unique_id=536152988]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_6f2ja")
+text = "0"
+script = ExtResource("1_jany0")

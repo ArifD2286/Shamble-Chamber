@@ -12,6 +12,7 @@ extends CharacterBody2D
 var player: Node2D
 var health: int
 var speed: float
+const damage_number = preload("res://damage_number.tscn")
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
@@ -35,5 +36,9 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	var num := damage_number.instantiate()
+	num.text = str(amount)
+	get_tree().current_scene.add_child(num)
+	num.global_position = global_position + Vector2(randf_range(-20, 20), -30)
 	if health <= 0:
 		queue_free()

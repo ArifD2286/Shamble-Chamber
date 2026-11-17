@@ -16,4 +16,4 @@ func refresh(guns: Array[GunData], selected: int) -> void:
 		else:
 			icon.texture = null
 		# [ self_modulate ] only tints that one node 
-		slot.self_modulate = Color.WHITE if i == selected else Color(1, 1, 1)
+		slot.self_modulate = Color.WHITE if i == selected else Color(0.01,0.01,0.01)
