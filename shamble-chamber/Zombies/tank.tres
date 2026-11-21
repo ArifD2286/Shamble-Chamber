@@ -9,3 +9,5 @@ health = 60
 speed = 75.0
 tint = Color(0.6570267, 0.17074153, 4.813075e-07, 1)
 size = 1.2
+damage = 15
+attack_cooldown = 4.0

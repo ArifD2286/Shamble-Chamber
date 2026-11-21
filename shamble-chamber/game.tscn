@@ -20,6 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://cgovvkfjkhlmw" path="res://zombie.tscn" id="13_lc2xo"]
 [ext_resource type="Texture2D" uid="uid://24dho4qca1tk" path="res://assets/shotgun_texture.png" id="15_boyg6"]
 [ext_resource type="Script" uid="uid://bcm13g6ejrfbu" path="res://hotbar.gd" id="15_e36ub"]
+[ext_resource type="Script" uid="uid://bqqxq0ti8g1g7" path="res://game_over.gd" id="17_hb5m1"]
+[ext_resource type="Texture2D" uid="uid://bphjepnjadn0m" path="res://assets/Shelf_items2.png" id="21_qhcbd"]
+[ext_resource type="Texture2D" uid="uid://bl8svpl4v88kw" path="res://assets/Shelf_items.png" id="22_f1jbl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
@@ -36,11 +39,20 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_s33ni"]
-vertices = PackedVector2Array(-48, -112, -144, -112, -368, -208, -368, -432, 837, -777, 837, 777, -837, 777, -368, 112, -304, 112, -48, 112, -464, 112, -837, -777, -464, -112, -144, 112, -208, 112, -208, -112, -304, -112, -464, -208, -464, -432, -368, -112)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8), PackedInt32Array(4, 5, 9, 0), PackedInt32Array(10, 7, 6), PackedInt32Array(10, 6, 11, 12), PackedInt32Array(1, 13, 14, 15), PackedInt32Array(2, 1, 15), PackedInt32Array(2, 15, 16, 17), PackedInt32Array(11, 4, 3, 18), PackedInt32Array(11, 18, 17), PackedInt32Array(12, 11, 17), PackedInt32Array(19, 12, 17), PackedInt32Array(19, 17, 16), PackedInt32Array(19, 16, 8, 7), PackedInt32Array(5, 8, 14), PackedInt32Array(5, 14, 13), PackedInt32Array(5, 13, 9)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-853, -793, 853, -793, 853, 793, -853, 793)])
 parsed_geometry_type = 1
 agent_radius = 16.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vaj68"]
+texture = ExtResource("21_qhcbd")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2p71"]
+texture = ExtResource("22_f1jbl")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iotsf"]
 texture = ExtResource("1_iotsf")
@@ -52,6 +64,8 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_iotsf")
+sources/0 = SubResource("TileSetAtlasSource_vaj68")
+sources/1 = SubResource("TileSetAtlasSource_i2p71")
 
 [node name="Node2D" type="Node2D" unique_id=773225363]
 script = ExtResource("1_lc2xo")
@@ -114,7 +128,7 @@ texture_scale = 1.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=188330152]
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=789384513]
+[node name="GunStats" type="Label" parent="CanvasLayer" unique_id=789384513]
 texture_filter = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -203,6 +217,28 @@ offset_right = 32.0
 theme_override_fonts/font = ExtResource("5_ryrav")
 text = "3"
 
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=983041551]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 20)
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 47.0
+show_percentage = false
+
+[node name="GameOver" type="Label" parent="CanvasLayer" unique_id=693690331]
+process_mode = 3
+visible = false
+texture_filter = 1
+offset_left = 369.0
+offset_top = 312.0
+offset_right = 783.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("5_ryrav")
+theme_override_font_sizes/font_size = 24
+text = "GAME OVER - Press [ R ] to restart"
+script = ExtResource("17_hb5m1")
+
 [node name="Shoot" type="AudioStreamPlayer" parent="." unique_id=93048737]
 stream = ExtResource("5_7jktm")
 volume_db = -10.0
@@ -224,7 +260,7 @@ navigation_polygon = SubResource("NavigationPolygon_s33ni")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=989831220]
 texture_filter = 1
-tile_map_data = PackedByteArray("AADy//3/AwAAAAAAAGDy//7/AwAAAAAAADDy////AwAAAAAAADDy/wAAAwAAAAAAADDy/wEAAwAAAAAAADDz//3/AwAAAAAAAGDz//7/AwAAAAAAAADz////AwAAAAAAAADz/wAAAwAAAAAAAADz/wEAAwAAAAAAAADy/wIAAwAAAAAAAFDz/wIAAwAAAAAAAFD3//3/AwAAAAAAAGD3//7/AwAAAAAAADD3////AwAAAAAAADD3/wAAAwAAAAAAADD3/wEAAwAAAAAAADD4//3/AwAAAAAAAGD4//7/AwAAAAAAAAD4////AwAAAAAAAAD4/wAAAwAAAAAAAAD4/wEAAwAAAAAAAAD3/wIAAwAAAAAAAFD4/wIAAwAAAAAAAFD8//3/AwAAAAAAAGD8//7/AwAAAAAAADD8////AwAAAAAAADD8/wAAAwAAAAAAADD8/wEAAwAAAAAAADD9//3/AwAAAAAAAGD9//7/AwAAAAAAAAD9////AwAAAAAAAAD9/wAAAwAAAAAAAAD9/wEAAwAAAAAAAAD8/wIAAwAAAAAAAFD9/wIAAwAAAAAAAFDy//j/AwAAAAAAAFDz//j/AwAAAAAAAFDz//f/AwAAAAAAAADz//b/AwAAAAAAAADz//X/AwAAAAAAAADz//T/AwAAAAAAAADz//P/AwAAAAAAAGDy//P/AwAAAAAAAGDy//T/AwAAAAAAADDy//X/AwAAAAAAADDy//b/AwAAAAAAADDy//f/AwAAAAAAADA=")
+tile_map_data = PackedByteArray("AADy//3/AwAAAAAAAGDy//7/AQAAAAAAADDy////AwAAAAAAADDy/wAAAwAAAAAAADDy/wEAAwAAAAAAADDz//3/AAAAAAAAAGDz//7/AwAAAAAAAADz////AwAAAAAAAADz/wAAAwAAAAAAAADz/wEAAAAAAAAAAADy/wIAAwAAAAAAAFDz/wIAAwAAAAAAAFD3//3/AwAAAAAAAGD3//7/AwAAAAAAADD3////AwAAAAAAADD3/wAAAAAAAAAAADD3/wEAAQAAAAAAADD4//3/AwAAAAAAAGD4//7/AAAAAAAAAAD4////AwAAAAAAAAD4/wAAAwAAAAAAAAD4/wEAAwAAAAAAAAD3/wIAAwAAAAAAAFD4/wIAAAAAAAAAAFD8//3/AwAAAAAAAGD8//7/AQAAAAAAADD8////AwAAAAAAADD8/wAAAwAAAAAAADD8/wEAAQAAAAAAABD9//3/AwAAAAAAAGD9//7/AwAAAAAAAAD9////AQAAAAAAACD9/wAAAAAAAAAAACD9/wEAAAAAAAAAAAD8/wIAAwAAAAAAAFD9/wIAAwAAAAAAAFDy//j/AwAAAAAAAFDz//j/AwAAAAAAAFDz//f/AwAAAAAAAADz//b/AwAAAAAAAADz//X/AwAAAAAAAADz//T/AwAAAAAAAADz//P/AwAAAAAAAGDy//P/AwAAAAAAAGDy//T/AwAAAAAAADDy//X/AwAAAAAAADDy//b/AwAAAAAAADDy//f/AwAAAAAAADA=")
 tile_set = SubResource("TileSet_n3vx6")
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1220944736]

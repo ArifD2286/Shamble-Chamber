@@ -9,3 +9,5 @@ extends Resource
 @export var speed: float = 100.0
 @export var tint: Color = Color.WHITE
 @export var size: float = 1.0
+@export var damage: int = 10
+@export var attack_cooldown: float = 1.0

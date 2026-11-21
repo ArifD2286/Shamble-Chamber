@@ -12,6 +12,7 @@ extends CharacterBody2D
 var player: Node2D
 var health: int
 var speed: float
+var attack_timer := 0.0
 const damage_number = preload("res://damage_number.tscn")
 
 func _ready() -> void:
@@ -32,6 +33,14 @@ func _physics_process(delta: float) -> void:
 	velocity = global_position.direction_to(next_point) * speed
 	look_at(next_point)
 	move_and_slide()
+	# [ get_slide_collision_count() ] counts how many things the zombie
+	# had bumped into
+	attack_timer -= delta
+	for i in get_slide_collision_count():
+		var hit: Node = get_slide_collision(i).get_collider()
+		if hit.is_in_group("player") and attack_timer <= 0.0:
+			hit.take_damage(data.damage)
+			attack_timer = data.attack_cooldown
 
 
 func take_damage(amount: int) -> void:

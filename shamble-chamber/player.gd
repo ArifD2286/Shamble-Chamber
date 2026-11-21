@@ -7,12 +7,15 @@ extends CharacterBody2D
 @onready var gun_shoot_sfx: AudioStreamPlayer = $"../Shoot"
 @onready var gun_reload_sfx: AudioStreamPlayer = $"../Reload"
 @onready var empty_shot_sfx: AudioStreamPlayer = $"../EmptyShot"
-@onready var live_ammo = $"../CanvasLayer/Label"
+@onready var live_ammo = $"../CanvasLayer/GunStats"
 @onready var gun_sprite: Sprite2D = $GunSprite
 @onready var hotbar = $"../CanvasLayer/HBoxContainer"
+@onready var health_bar: ProgressBar = $"../CanvasLayer/ProgressBar"
+@onready var game_over = $"../CanvasLayer/GameOver"
 @export var bullet_scene: PackedScene
 @export var speed: float = 275.0
 @export var slot_guns: Array[GunData] = [null, null, null]
+@export var max_health: int = 150
 var shoot_perm := true
 var ammo: int
 var is_reloading := false
@@ -20,12 +23,16 @@ var slot_ammo: Array[int] = [0, 0, 0]
 var current_slot := 0
 var reload_id := 0
 var gun: GunData
+var health: int
 
 func _ready() -> void:
 	for i in slot_guns.size():
 		if slot_guns[i] != null:
 			slot_ammo[i] = slot_guns[i].mag_size
 	add_to_group("player")
+	health = max_health
+	health_bar.max_value = max_health
+	health_bar.value = health
 	equip(0)
 
 
@@ -106,3 +113,15 @@ func equip(slot: int) -> void:
 	gun_reload_sfx.stop()
 	is_reloading = false
 	hotbar.refresh(slot_guns, current_slot)
+
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	health_bar.value = health
+	if health <= 0:
+		die()
+
+
+func die() -> void:
+	game_over.visible = true
+	get_tree().paused = true

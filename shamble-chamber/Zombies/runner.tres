@@ -8,3 +8,4 @@ zombie_name = "Runner"
 health = 20
 speed = 150.0
 tint = Color(0.6383627, 0.47663504, 0.06686556, 1)
+damage = 5
