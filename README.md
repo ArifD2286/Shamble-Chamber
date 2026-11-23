@@ -36,4 +36,4 @@ Step into the chaos of endless zombie waves in a maze of shelves and endless ais
 - Update 4.1 - 4.x : Map design
 
 ---
-## Made for PIXL by HackClub
+## Made for Phantom by HackClub
