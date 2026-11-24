@@ -23,6 +23,9 @@
 [ext_resource type="Script" uid="uid://bqqxq0ti8g1g7" path="res://game_over.gd" id="17_hb5m1"]
 [ext_resource type="Texture2D" uid="uid://bphjepnjadn0m" path="res://assets/Shelf_items2.png" id="21_qhcbd"]
 [ext_resource type="Texture2D" uid="uid://bl8svpl4v88kw" path="res://assets/Shelf_items.png" id="22_f1jbl"]
+[ext_resource type="Texture2D" uid="uid://cm2r70vfmoaay" path="res://assets/Shelf_items3.png" id="23_f1jbl"]
+[ext_resource type="Texture2D" uid="uid://dhlwcgatjbuex" path="res://assets/Shelf_items4.png" id="25_i2p71"]
+[ext_resource type="Texture2D" uid="uid://btxtkawl4ari3" path="res://assets/Shelf_items5.png" id="26_xa8c5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2o6t"]
 radius = 15.0
@@ -54,11 +57,27 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xa8c5"]
+texture = ExtResource("23_f1jbl")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iotsf"]
 texture = ExtResource("1_iotsf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5b14r"]
+texture = ExtResource("25_i2p71")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bnpwn"]
+texture = ExtResource("26_xa8c5")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_n3vx6"]
 tile_size = Vector2i(32, 32)
@@ -66,6 +85,9 @@ physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_iotsf")
 sources/0 = SubResource("TileSetAtlasSource_vaj68")
 sources/1 = SubResource("TileSetAtlasSource_i2p71")
+sources/2 = SubResource("TileSetAtlasSource_xa8c5")
+sources/4 = SubResource("TileSetAtlasSource_5b14r")
+sources/5 = SubResource("TileSetAtlasSource_bnpwn")
 
 [node name="Node2D" type="Node2D" unique_id=773225363]
 script = ExtResource("1_lc2xo")
