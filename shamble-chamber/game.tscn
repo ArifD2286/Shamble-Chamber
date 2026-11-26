@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://b5121ty6npeys" path="res://assets/Minecraft.ttf" id="5_ryrav"]
 [ext_resource type="Resource" uid="uid://dpfx6e25ljbuk" path="res://Zombies/walker.tres" id="6_hb5m1"]
 [ext_resource type="Texture2D" uid="uid://dv25chih8nwn6" path="res://assets/pistol_texture.png" id="6_mfdv2"]
+[ext_resource type="Texture2D" uid="uid://b2jc1s24a2biu" path="res://assets/floor_tile.jpg" id="7_bnpwn"]
 [ext_resource type="AudioStream" uid="uid://bgsk15vqqywxr" path="res://assets/empty_shot_sfx.mp3" id="7_eow3j"]
 [ext_resource type="AudioStream" uid="uid://bfpjcdkxfb53j" path="res://assets/gun_reload_sfx.mp3" id="7_j5wjh"]
 [ext_resource type="PackedScene" uid="uid://cgovvkfjkhlmw" path="res://zombie.tscn" id="13_lc2xo"]
@@ -113,11 +114,22 @@ zombie_scene = ExtResource("13_lc2xo")
 zombie_types = Array[ExtResource("3_rvswv")]([ExtResource("4_boyg6"), ExtResource("5_e36ub"), ExtResource("6_hb5m1")])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1516551246]
-offset_left = -853.0
-offset_top = -793.0
-offset_right = 853.0
-offset_bottom = 793.0
+offset_left = -770.0
+offset_top = -648.0
+offset_right = 771.0
+offset_bottom = 648.0
 color = Color(0.627451, 0.627451, 0.627451, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=143335336]
+self_modulate = Color(0.9372549, 0.9372549, 0.9372549, 1)
+texture_filter = 1
+offset_left = -1261.0
+offset_top = -869.0
+offset_right = 47726.535
+offset_bottom = 44306.28
+scale = Vector2(0.04721609, 0.04721609)
+texture = ExtResource("7_bnpwn")
+stretch_mode = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=302081087]
 script = ExtResource("1_80nbo")

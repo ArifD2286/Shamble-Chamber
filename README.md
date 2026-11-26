@@ -27,6 +27,14 @@ Step into the chaos of endless zombie waves in a maze of shelves and endless ais
 ### Demo:
 ( will be added in future )
 
+---
+### Resources:
+Audio:
+- Shotgun reload: https://pixabay.com/sound-effects/film-special-effects-shotgun-reload-sfx-36524/
+- Shotgun blast: https://pixabay.com/sound-effects/film-special-effects-shotgun-blast-352038/
+- Empty gun: https://pixabay.com/sound-effects/film-special-effects-empty-gun-shot-6209/
+- Gun shot (trimmed for only 1 section of the sound): https://pixabay.com/sound-effects/film-special-effects-gun-shot-350315/
+- Gun reload: https://pixabay.com/sound-effects/film-special-effects-gun-reload-504026/
 
 ---
 ### Update logs:
